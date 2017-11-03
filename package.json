@@ -1,0 +1,26 @@
+{
+  "name": "system-classic",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "me@poyu.xyz",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^1.0.0-rc11",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-mixins": "^6.2.0",
+    "postcss-smart-import": "^0.7.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.6",
+    "postcss-assets": "^5.0.0",
+    "postcss-import": "^11.0.0",
+    "postcss-url": "^7.1.2",
+    "pug": "^2.0.0-rc.4"
+  }
+}

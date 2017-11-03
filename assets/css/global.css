@@ -1,0 +1,11 @@
+@import '_reset';
+
+@font-face {
+  font-family: 'Chicago';
+  src: url('/fonts/Chicago.woff') format('woff'); /* Safari, Android, iOS */
+}
+
+body {
+  font-family: 'Roboto', Fallback, sans-serif;
+  background-color: black;
+}
