@@ -22,7 +22,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    watch: ['components']
+    // watch: ['components']
     /*
     ** Run ESLint on save
     */

@@ -4,8 +4,8 @@
 </template>
 
 <script>
-import Desktop from '../components/Desktop'
-import TaskBar from '../components/TaskBar'
+import Desktop from '~/components/Desktop'
+import TaskBar from '~/components/Taskbar/TaskBar'
 
 export default {
   components: {
