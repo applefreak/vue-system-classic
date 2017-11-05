@@ -3,7 +3,7 @@
     li.submenus(v-for="(submenus, idx) in taskbarItem" v-bind:class="{inverted: submenusSelected(pos, idx)}" @click="toggleSubmenu(pos, idx)")
       div(:class="{left: pos === 'left'}") {{ submenus.title }}
       ul.submenu(:class="getSubmenuDisplayState(pos, idx)")
-        li.menuitem(v-for='submenu in submenus.children' @click.stop) {{ submenu.title }}
+        li.menuitem(v-for='submenu in submenus.children' @click.stop="triggerMenuItem($event, submenu.title)") {{ submenu.title }}
 </template>
 
 <script>
@@ -19,8 +19,26 @@ export default {
       }
     },
     submenusSelected(pos, idx) {
-      console.log(this.$store.state.taskbar[pos][idx].state.hidden)
       return this.$store.state.taskbar[pos][idx].state.hidden === false
+    },
+    triggerMenuItem(event, app) {
+      let i = 0;
+      event.target.classList.add('inverted')
+      let t = window.setInterval(() => {
+        if (i < 11) {
+          if (event.target.classList.contains('inverted')) {
+            event.target.classList.remove('inverted')
+          } else {
+            event.target.classList.add('inverted')
+          }
+          i++
+        } else {
+          window.clearInterval(t)
+          const [pos, idx] = this.$store.state.taskbar.last
+          this.$store.state.taskbar[pos][idx].state.hidden = true
+          console.log('Triggering: ' + app)
+        }
+      }, 45)
     }
   }
 }
@@ -50,12 +68,7 @@ export default {
 
     &:first-child > div.left {
       font-size: 1.35em;
-    };
-
-/*    & > div.inverted {
-      background-color: black;
-      color: white;
-    }*/
+    }
   }
 
   .submenu {
@@ -72,11 +85,16 @@ export default {
       display: none;
     }
 
-    & li {
+    & > .menuitem {
       padding: 0.25em 1.5em;
       background-color: white;
       color: black;
       text-align: left;
+
+      &.inverted {
+        background-color: black;
+        color: white;
+      }
     }
   }
 </style>
